@@ -1,3 +1,5 @@
+// front end rest requests (communicating with backend, then backend will communicate with db)
+
 import * as baseService from './base';
 
 function all() {

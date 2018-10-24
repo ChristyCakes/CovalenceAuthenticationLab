@@ -16,7 +16,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        userService.checkLogin()
+        userService.checkLogin()    // checks if user is logged in
         .then((loggedIn) => {
             if (loggedIn) {
                 this.setState({ redirectToReferrer: true, checkingLogin: false });
@@ -47,6 +47,7 @@ class Login extends Component {
     }
 
     render() {
+        // from variable stores page user came from for potential redirect if need to log in first
        const { from } = this.props.location.state || { from: { pathname: '/' } };
        const { redirectToReferrer, checkingLogin } = this.state;
 
@@ -62,7 +63,7 @@ class Login extends Component {
        return (
            <Fragment>
                 <p>You must be logged in to view this page.</p>
-                <form onSubmit={(e) => this.login(e)}>
+                <form onSubmit={(e) => this.login(e)}>  {// submit here instead of onclick for button}
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input id="email" className="form-control" type="email" onChange={(e) => this.handleEmailChange(e.target.value)} required /> 

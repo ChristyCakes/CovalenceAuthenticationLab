@@ -11,7 +11,7 @@ function checkLogin() {
         return Promise.resolve(true);
     } else {
         baseService.populateAuthToken();
-        return me()
+        return me() // return me func below
         .then((user) => {
             loggedIn = true;
             return Promise.resolve(true);
@@ -50,6 +50,7 @@ function logout() {
     loggedIn = false;
 }
 
+// me func is a test to see if logged in -- protects the route
 function me() {
     return baseService.get('/api/users/me');
 }

@@ -14,11 +14,13 @@ class Navigation extends Component {
             <Router>
                 <Fragment>
                     <Link to="/goodbye">Goodbye</Link>
+                    {/* AuthButton checks login status and provides the opposite button */}
                     <AuthButton />
                     <Switch>
                         <Route exact path="/" component={HelloWorld} />
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
+                        {/* use privateRoute wrapper to ensure route accessible only to those logged in */}
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>

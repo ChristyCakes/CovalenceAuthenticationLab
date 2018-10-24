@@ -9,7 +9,7 @@ class GoodbyeWorld extends Component {
     }
 
     componentDidMount() {
-        classService.all()
+        classService.all()  // front end comunication to server, 'get all' request from classes db
         .then(console.log);
     }
 

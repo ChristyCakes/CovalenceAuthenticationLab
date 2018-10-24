@@ -1,4 +1,6 @@
-import 'isomorphic-fetch';
+// this file's code attaches token on fetch requests
+
+import 'isomorphic-fetch';  // polyfills for older browsers
 
 const AUTH_TOKEN_KEY = 'authtoken';
 let authToken = '';
@@ -46,7 +48,7 @@ function json(url, method = 'GET', payload = {}) {
 
     return makeFetch(url, data)
         .then((response) => {
-            if (response.ok) {
+            if (response.ok) {      // response.ok is true if statusCode is 200 - 300
                 let contentType = response.headers.get('Content-Type');
 
                 if (contentType.indexOf('application/json') > -1) {
@@ -59,6 +61,8 @@ function json(url, method = 'GET', payload = {}) {
             throw response;
         });
 }
+
+// rest calls using json func above
 
 function get(url) {
     return json(url);
@@ -85,4 +89,5 @@ export {
     put,
     destroy,
     makeFetch
+    // no need to export json func because it won't be called from another file, only in here
 };

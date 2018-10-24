@@ -13,7 +13,7 @@ class Logout extends Component {
     }
 
     componentDidMount() {
-        userService.logout();
+        userService.logout();   // when logout component mounts, token deleted on this line
         this.setState({ loggedOut: true });
     }
 
